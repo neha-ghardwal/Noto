@@ -2,8 +2,10 @@ import React from "react";
 import bg from "../../assets/bg1.jpg";
 import { motion } from "framer-motion";
 import Navbar from "../../components/navbar/navbar";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="relative h-screen w-screen border-none"
@@ -82,6 +84,7 @@ const Home = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="flex items-center gap-4 px-6 py-2.5 bg-gray-100 text-black font-light text-sm rounded-xl cursor-pointer hover:scale-105"
+            onClick={() => navigate("/dashboard")}
           >
             Create Note
           </motion.button>
