@@ -1,5 +1,3 @@
-import { time } from "framer-motion";
-import React from "react";
 import { MdOutlinePushPin } from "react-icons/md";
 import { MdCreate, MdDelete } from "react-icons/md";
 
@@ -14,32 +12,33 @@ const NoteCard = ({
   onPinNote,
 }) => {
   return (
-    <div className="order rounded p-4 bg-white hover:shadow-xl transition-all ease-in-out">
-      <div className="flex items-center justify-between">
+    <div className="rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow p-6">
+      <div className="flex justify-between items-start mb-4">
         <div>
-          <h6 className="text-sm font-medium">{title}</h6>
-          <span className="text-xs text-slate-500">{date}</span>
+          <h6 className="text-lg font-semibold text-gray-800">{title}</h6>
+          <span className="text-sm text-gray-500">{date}</span>
         </div>
 
         <MdOutlinePushPin
-          className={`icon-btn ${
-            isPinned ? "text-blue-400" : "text-slate-400"
+          className={`text-xl cursor-pointer ${
+            isPinned ? "text-blue-500" : "text-gray-400"
           }`}
           onClick={onPinNote}
         />
       </div>
 
-      <p className="text-xs text-slate-600 mt-2">{content?.slice(0, 60)}</p>
+      <p className="text-gray-600 text-sm line-clamp-2 mb-4">{content}</p>
 
-      <div className="flex justify-between items-center mt-2">
-        <div className="text-xs text-slate-500">{tags}</div>
-        <div className="flex items-center gap-2">
+      <div className="flex justify-between items-center">
+        <div className="text-xs text-gray-500">{tags}</div>
+
+        <div className="flex items-center gap-3">
           <MdCreate
-            className="icon-btn hover:text-green-700"
+            className="text-gray-600 hover:text-green-600 cursor-pointer"
             onClick={onEdit}
           />
           <MdDelete
-            className="icon-btn hover:text-red-700"
+            className="text-gray-600 hover:text-red-600 cursor-pointer"
             onClick={onDelete}
           />
         </div>

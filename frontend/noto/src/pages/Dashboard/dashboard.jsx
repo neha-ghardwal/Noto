@@ -33,7 +33,7 @@ const Dashboard = () => {
 
         {/* notes */}
         <div className="flex-1 overflow-auto">
-          <div className="w-full h-full bg-gradient-to-br from-[#164b84] to-[#0a2d4d] rounded-2xl p-7">
+          <div className="w-full h-full bg-gradient-to-br from-blue-200 to-blue-400 rounded-2xl p-7">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <NoteCard
                 title="Meeting"
@@ -93,7 +93,11 @@ const Dashboard = () => {
           contentLabel=""
         >
           <AddNotes
-            onClose={() => setOpenAddNote({ ...openAddNote, isShown: false })}
+            type={openAddNote.type}
+            noteData={openAddNote.data}
+            onClose={() =>
+              setOpenAddNote({ isShown: false, type: "add", data: null })
+            }
           />
         </Modal>
       </main>

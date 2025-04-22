@@ -8,7 +8,7 @@ const SearchBar = ({ value, onChange, handleSearch, onClearSearch }) => {
       <input
         type="text"
         placeholder="Search notes"
-        className="w-full text-sm p-2 pr-10 rounded-3xl border border-gray-300 outline-none"
+        className="w-full text-sm p-2 pr-10 rounded-3xl border border-gray-300 outline-none text-white"
         value={value}
         onChange={onChange}
         onKeyDown={(e) => {
@@ -20,12 +20,12 @@ const SearchBar = ({ value, onChange, handleSearch, onClearSearch }) => {
 
       {value ? (
         <IoMdClose
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xl text-slate-500 cursor-pointer hover:text-black"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-xl text-slate-500 cursor-pointer hover:text-white"
           onClick={onClearSearch}
         />
       ) : (
         <FaMagnifyingGlass
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-black w-4 h-4"
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-500 cursor-pointer hover:text-white w-4 h-4"
           onClick={handleSearch}
         />
       )}
