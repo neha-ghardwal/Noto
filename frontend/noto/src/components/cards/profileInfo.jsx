@@ -16,7 +16,7 @@ const ProfileInfo = ({ onLogout }) => {
       {/* Logout Button */}
       <button
         onClick={onLogout}
-        className="text-white hover:text-black transition duration-200"
+        className="w-10 h-10 flex items-center justify-center rounded-full text-white hover:bg-gray-400 transition duration-200 cursor-pointer"
       >
         <LogOutIcon className="w-5 h-5" />
       </button>

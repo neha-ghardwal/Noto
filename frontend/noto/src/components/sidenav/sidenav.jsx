@@ -22,10 +22,13 @@ const SideNavBar = () => {
 
   return (
     <aside className="h-full">
-      <nav className="h-full flex flex-col justify-between bg-gray-400 rounded-2xl p-4">
+      <nav className="h-full flex flex-col justify-between bg-gradient-to-b from-blue-950 via-blue-800 to-blue-900 rounded-2xl p-4">
         {/* Top section */}
         <div className="flex flex-col gap-2">
-          <FaStickyNote className="w-6 h-6 text-indigo-600" />
+          <h2 className="text-lg text-white">Welcome Back!</h2>
+          <h4 className="text-xs text-slate-200 font-light italic">
+            Ready to get started?
+          </h4>
           <SearchBar
             value={searchQuery}
             onChange={({ target }) => {
