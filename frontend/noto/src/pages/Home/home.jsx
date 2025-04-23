@@ -1,5 +1,5 @@
 import React from "react";
-import bg from "../../assets/bg1.jpg";
+import bg from "../../assets/bgg.jpg";
 import { motion } from "framer-motion";
 import Navbar from "../../components/navbar/navbar";
 import { useNavigate } from "react-router-dom";
@@ -25,9 +25,9 @@ const Home = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-white flex flex-col justify-center items-center h-full px-4 pt-20"
+        className="text-[#66ff66] flex flex-col justify-center items-center h-full px-4 pt-20"
       >
-        {/* intro text */}
+        {/* Intro text */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.3, delay: 0.2 }}
-            className="text-3xl md:text-7xl font-light mb-2 bg-gradient-to-r from-white via-white to-blue-500 bg-clip-text text-transparent"
+            className="text-3xl md:text-7xl font-light mb-2 bg-gradient-to-r from-[#ddffdd] via-[#70e970] to-[#165b16] bg-clip-text text-transparent"
           >
             Access Your Daily <br />
             Orbit of Hidden Wisdom.
@@ -47,7 +47,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 0.3 }}
-            className="text-sm md:text-lg font-light text-gray-200 mb-4"
+            className="text-sm md:text-lg font-light text-[#cbf2cb] mb-4"
           >
             Craft Celestial Notes. Daily. Mindfully.
           </motion.p>
@@ -65,7 +65,7 @@ const Home = () => {
               d="M10 70 C100 20, 150 120, 240 50 
                  C260 30, 260 10, 240 30 
                  C220 50, 300 90, 480 20"
-              stroke="white"
+              stroke="#66ff66"
               strokeOpacity="0.6"
               strokeWidth="1"
               fill="none"
@@ -73,7 +73,7 @@ const Home = () => {
           </motion.svg>
         </motion.div>
 
-        {/* buttons */}
+        {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -83,7 +83,7 @@ const Home = () => {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="flex items-center gap-4 px-6 py-2.5 bg-gray-100 text-black font-light text-sm rounded-xl cursor-pointer hover:scale-105"
+            className="flex items-center gap-4 px-6 py-2.5 bg-white text-[#076907] font-medium text-sm rounded-xl cursor-pointer hover:scale-105 border border-[#2e622e] z-10"
             onClick={() => navigate("/dashboard")}
           >
             Create Note
@@ -91,14 +91,11 @@ const Home = () => {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="flex items-center gap-4 px-6 py-2.5 bg-transparent text-gray-200 border border-gray-200 font-light text-sm cursor-pointer rounded-xl hover:scale-105"
+            className="flex items-center gap-4 px-6 py-2.5 bg-transparent text-[#99ff99] border border-[#66ff66] font-light text-sm cursor-pointer rounded-xl hover:scale-105"
           >
             Learn more
           </motion.button>
         </motion.div>
-      </motion.div>
-      <motion.div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_40%_at_50%_100%,#000_70%,transparent_100%)]">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-300/10 via-transparent to-blue-200/10"></div>
       </motion.div>
     </div>
   );
