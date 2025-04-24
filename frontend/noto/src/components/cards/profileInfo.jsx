@@ -2,15 +2,19 @@ import { LogOutIcon } from "lucide-react";
 import React from "react";
 import { getInitials } from "../../utils/helper";
 
-const ProfileInfo = ({ onLogout }) => {
+const ProfileInfo = ({ userInfo, onLogout }) => {
+  if (!userInfo) return null;
+
   return (
     <div className="flex items-center justify-between w-full bg-[#0d0d0d]">
       {/* Profile Info */}
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 flex items-center justify-center rounded-full text-[#86ab86] bg-[#1a2b1a]">
-          {getInitials("Neha Ghardwal")}
+          {getInitials(userInfo.fullName)}
         </div>
-        <p className="text-lg font-medium text-[#66ff66]">Neha</p>
+        <p className="text-lg font-medium text-[#66ff66]">
+          {userInfo.fullName}
+        </p>
       </div>
 
       {/* Logout Button */}

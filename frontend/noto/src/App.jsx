@@ -4,6 +4,7 @@ import Home from "./pages/Home/home";
 import Signup from "./pages/Signup/signup";
 import Login from "./pages/Login/login";
 import Dashboard from "./pages/Dashboard/dashboard";
+import ProtectedRoute from "./components/protectedRoutes/ProtectedRoutes";
 
 const routes = (
   <Router>
@@ -11,7 +12,14 @@ const routes = (
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />{" "}
     </Routes>
   </Router>
 );
