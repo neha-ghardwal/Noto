@@ -2,12 +2,16 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import { validateEmail } from "../../utils/helper";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "@/utils/axiosInstance";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -25,6 +29,36 @@ const Signup = () => {
       return;
     }
     setError("");
+
+    // Signup API call
+    try {
+      const response = await axiosInstance.post("/create-account", {
+        fullName: name,
+        email: email,
+        password: password,
+      });
+
+      if (response.data && response.data.error) {
+        setError(response.data.message);
+        return;
+      }
+      if (response.data && response.data.accessToken) {
+        localStorage.setItem("token", response.data.accessToken);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setError(error.response.data.message);
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
+    }
   };
 
   return (
@@ -107,17 +141,17 @@ const Signup = () => {
         </p>
 
         {/* Divider */}
-        <div className="flex items-center justify-center text-gray-500 text-xs mb-4">
+        {/* <div className="flex items-center justify-center text-gray-500 text-xs mb-4">
           <span className="w-full border-t border-[#2e2e33] mr-2" />
           OR
           <span className="w-full border-t border-[#2e2e33] ml-2" />
-        </div>
+        </div> */}
 
         {/* Google Signup */}
-        <button className="w-full flex items-center justify-center gap-2 bg-[#181828] hover:bg-[#222232] text-white py-2 rounded-md text-sm border border-[#2e2e3e] transition-all duration-200 cursor-pointer">
+        {/* <button className="w-full flex items-center justify-center gap-2 bg-[#181828] hover:bg-[#222232] text-white py-2 rounded-md text-sm border border-[#2e2e3e] transition-all duration-200 cursor-pointer">
           <FcGoogle className="text-lg" />
           Continue with Google
-        </button>
+        </button> */}
       </div>
     </div>
   );

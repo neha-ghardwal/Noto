@@ -1,10 +1,12 @@
 import {
   MdOutlinePushPin,
+  MdPushPin, // ← import the filled pin
   MdCreate,
   MdDelete,
   MdLabel,
   MdCalendarToday,
 } from "react-icons/md";
+import moment from "moment";
 
 const NoteCard = ({
   title,
@@ -17,11 +19,7 @@ const NoteCard = ({
   onPinNote,
 }) => {
   return (
-    <div className="relative rounded-xl bg-[#0d0d0d] border border-green-500/30 shadow-[0_0_8px_#00ff5530] hover:shadow-[0_0_12px_#00ff5560] transition-all duration-200 p-5 group">
-      {isPinned && (
-        <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-b-[20px] border-b-green-500/80 rounded-tr-xl" />
-      )}
-
+    <div className="relative rounded-xl bg-neutral-800 border border-green-500/30 shadow-[0_0_8px_#00ff5530] hover:shadow-[0_0_12px_#00ff5560] transition-all duration-200 p-5 group">
       {/* Header */}
       <div className="flex justify-between items-start gap-3 mb-3">
         <div className="overflow-hidden flex items-center gap-2">
@@ -31,7 +29,9 @@ const NoteCard = ({
             </h6>
             <div className="flex items-center gap-2 text-xs text-gray-500">
               <MdCalendarToday className="text-xs" />
-              <span className="font-mono">{date}</span>
+              <span className="font-mono">
+                {moment(date).format("Do MMMM YYYY")}
+              </span>
             </div>
           </div>
         </div>
@@ -41,11 +41,11 @@ const NoteCard = ({
           className="p-1 rounded-full hover:bg-green-500/10 transition-colors group-hover:opacity-100"
           aria-label={isPinned ? "Unpin note" : "Pin note"}
         >
-          <MdOutlinePushPin
-            className={`text-xl ${
-              isPinned ? "text-green-400" : "text-gray-600"
-            }`}
-          />
+          {isPinned ? (
+            <MdPushPin className="text-xl text-green-400" />
+          ) : (
+            <MdOutlinePushPin className="text-xl text-gray-600" />
+          )}
         </button>
       </div>
 
@@ -58,7 +58,7 @@ const NoteCard = ({
       <div className="flex justify-between items-center border-t border-green-500/10 pt-3">
         <div className="flex items-center gap-1 text-xs text-green-300 bg-green-500/10 px-2 py-1 rounded-full">
           <MdLabel className="text-xs" />
-          <span className="font-mono">{tags}</span>
+          <span className="font-mono">{tags.join(", ")}</span>
         </div>
 
         <div className="flex items-center gap-1">
