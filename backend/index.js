@@ -355,8 +355,9 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
         });
     }
 });
+app.get("/health", (_req, res) => res.status(200).json({ status: "ok" }));
 
-app.listen(8000, () => {
-    console.log("✅ Server running on http://localhost:8000");
-});
+
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`✅ Server on port ${PORT}`));
 module.exports = app;
