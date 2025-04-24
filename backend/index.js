@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 
 
 
-      {/* Authentication & user */}
+    //   {/* Authentication & user */}
 //create account
 app.post("/create-account",async (req, res) => {
     const {fullName, email, password} = req.body;
@@ -143,7 +143,7 @@ app.get("/get-user",authenticateToken, async (req, res) => {
     });
 });
 
-        {/* Notes work below*/}
+        // {/* Notes work below*/}
 
 //Add note
 app.post("/add-note", authenticateToken, async (req, res) => {
@@ -324,6 +324,39 @@ app.put("/update-note-pinned/:noteId", authenticateToken, async (req, res) => {
     }
 });
 
-app.listen(8000);
+//search note
+app.get("/search-notes/", authenticateToken, async (req, res) => {
+    const {user} = req.user;
+    const {query} = req.query;
 
+    if(!query){
+        return res  
+            .status(400)
+            .json({error:true, message:"Search query is required"});
+    }
+
+    try{
+        const matchingNotes = await Note.find({
+            userId:user._id,
+            $or:[
+                {title: { $regex:new RegExp(query,"i")}},
+                {content: { $regex:new RegExp(query,"i")}},
+            ],
+        });
+        return res.json({
+            error:false,
+            notes:matchingNotes,
+            message:"Notes fetched successfully",
+        });
+    } catch(error){
+        return res.status(500).json({
+            error:true,
+            message:"Internal server error",
+        });
+    }
+});
+
+app.listen(8000, () => {
+    console.log("✅ Server running on http://localhost:8000");
+});
 module.exports = app;
