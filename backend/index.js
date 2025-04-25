@@ -117,6 +117,8 @@ app.post("/login", async (req,res)=>{
             accessToken,
             message:"Login successfully",
         });
+        console.log(response.data);
+
     }
     else{
         return res.status(400).json({
