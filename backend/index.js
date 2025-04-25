@@ -9,7 +9,7 @@ mongoose.connect(config.connectionString, {
   })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch(err => console.error("❌ MongoDB connection error:", err));
-  
+
 //connecting to mongodb
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
@@ -24,10 +24,21 @@ const { authenticateToken } = require("./utilities");
 
 app.use(express.json());
 
+const allowedOrigins = [
+  "http://localhost:5173",             // for local dev
+  "https://notonote.vercel.app"       // your live frontend
+];
+
 app.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true
-  }));
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
 
 app.get("/", (req, res) => {
     res.json({data:"Hello World"});
