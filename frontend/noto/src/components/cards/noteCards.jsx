@@ -19,7 +19,7 @@ const NoteCard = ({
   onPinNote,
 }) => {
   return (
-    <div className="relative rounded-xl bg-neutral-800 border border-green-500/30 shadow-[0_0_8px_#00ff5530] hover:shadow-[0_0_12px_#00ff5560] transition-all duration-200 p-5 group">
+    <div className="relative rounded-xl bg-neutral-800 border border-green-500/30 shadow-[0_0_8px_#00ff5530] hover:shadow-[0_0_12px_#00ff5560] transition-all duration-200 p-5 group transform hover:-rotate-1 hover:scale-[1.01]">
       {/* Header */}
       <div className="flex justify-between items-start gap-3 mb-3">
         <div className="overflow-hidden flex items-center gap-2">
