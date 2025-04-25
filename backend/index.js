@@ -3,8 +3,13 @@ require("dotenv").config();
 const config = require("./config.json");
 const mongoose = require("mongoose");
 
-mongoose.connect(config.connectionString);
-
+mongoose.connect(config.connectionString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch(err => console.error("❌ MongoDB connection error:", err));
+  
 //connecting to mongodb
 const User = require("./models/user.model");
 const Note = require("./models/note.model");
@@ -19,11 +24,11 @@ const { authenticateToken } = require("./utilities");
 
 app.use(express.json());
 
-app.use(
-    cors({
-        origin:"*",
-    })
-);
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+  }));
+
 app.get("/", (req, res) => {
     res.json({data:"Hello World"});
 });
