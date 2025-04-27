@@ -1,3 +1,18 @@
+# 📝 Noto App
+
+## 📚 Introduction
+Noto is a lightweight, intuitive note-taking application that helps users capture, organize, and manage their ideas effortlessly.  
+Designed for simplicity, speed, and seamless cross-device usage, it’s perfect for both personal and professional workflows.
+
+## 🛠️ Tech Stack
+- 🎨 **Frontend:** React.js, Tailwind CSS
+- 🖥️ **Backend:** Node.js, Express.js
+- 🗄️ **Database:** MongoDB
+- 🔐 **Authentication:** JWT (JSON Web Tokens)
+- ☁️ **Hosting:** Vercel / Render
+
+--------------------Template--------------
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
