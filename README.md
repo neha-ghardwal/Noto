@@ -7,8 +7,7 @@ Designed for simplicity, speed, and seamless cross-device usage, it’s perfect 
 ## 🛠️ Tech Stack
 - 🎨 **Frontend:** React.js, Tailwind CSS
 - 🖥️ **Backend:** Node.js, Express.js
-- 🗄️ **Database:** MongoDB
-- 🔐 **Authentication:** JWT (JSON Web Tokens)
+- 🗄️ **Database:** MongoDB (used jwt Tokens)
 - ☁️ **Hosting:** Vercel / Render
 
 --------------------Template--------------
