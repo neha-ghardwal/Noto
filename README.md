@@ -10,7 +10,7 @@ Designed for simplicity, speed, and seamless cross-device usage, it’s perfect 
 - 🗄️ **Database:** MongoDB (used jwt Tokens)
 - ☁️ **Hosting:** Vercel / Render
 
---------------------Template--------------
+--------------------Template----------------
 
 # React + Vite
 
